@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/* Smartphone en portrait */
+@media all and (min-width: 0px) {
+
+    .counter {
+        display: inline-block;
+        margin: 20px 0;
+        background-color: #1d2124;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        line-height: 40px;
+    }
+    .counter a {
+        display: inline-block;
+        vertical-align: top;
+        color: white;
+        background-color: #2C3E50;
+        text-shadow: none;
+        transition: none;
+        border-radius: 3px;
+        margin: 5px;
+        padding: 5px;
+        width: 30px;
+        height: 30px;
+        line-height: 20px;
+    }
+    .counter a:hover {
+        color: wheat;
+    }
+    .counter .current {
+        background-color: orangered;
+        color: black;
+    }
+    .counter .stream {
+        display: inline-block;
+        border: orangered 3px solid;
+        border-radius: 3px;
+        width: auto;
+        color: orangered;
+        line-height: 14px;
+    }
+    .counter .current:hover {
+        color: darkred;
+    }
+}
+
+/* Smartphone en paysage, tablette en portrait, petite tablette en paysage */
+@media all and (min-width: 480px) {
+
+}
+
+/* Tablette en paysage, ordinateur de taille petite et moyenne */
+@media all and (min-width: 960px) {
+
+}
+
+/* Ordinateur de grande taille */
+@media all and (min-width: 1280px) {
+
+}

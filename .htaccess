@@ -1,0 +1,14 @@
+ErrorDocument 400 /prends-ton-dessin-en-main/app/error.php?err=400
+ErrorDocument 401 /prends-ton-dessin-en-main/app/error.php?err=401
+ErrorDocument 402 /prends-ton-dessin-en-main/app/error.php?err=402
+ErrorDocument 403 /prends-ton-dessin-en-main/app/error.php?err=403
+ErrorDocument 404 /prends-ton-dessin-en-main/app/error.php?err=404
+ErrorDocument 405 /prends-ton-dessin-en-main/app/error.php?err=405
+ErrorDocument 500 /prends-ton-dessin-en-main/app/error.php?err=500
+ErrorDocument 501 /prends-ton-dessin-en-main/app/error.php?err=501
+ErrorDocument 502 /prends-ton-dessin-en-main/app/error.php?err=502
+ErrorDocument 503 /prends-ton-dessin-en-main/app/error.php?err=503
+ErrorDocument 504 /prends-ton-dessin-en-main/app/error.php?err=504
+ErrorDocument 505 /prends-ton-dessin-en-main/app/error.php?err=505
+Options -Indexes
+php_flag log_errors on

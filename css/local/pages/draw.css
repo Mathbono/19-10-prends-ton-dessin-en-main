@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+/* Smartphone en portrait */
+@media all and (min-width: 0px) {
+
+    main {
+        text-align: center;
+        min-width: 340px;
+    }
+
+    /********************** TITRE ET CANVAS **********************/
+
+    canvas {
+        background-color: white;
+        margin-bottom: 30px;
+    }
+    canvas, .toolbar ul {
+        box-shadow: 0 0 8px 1px #2C3E50;
+    }
+    .slate {
+        cursor: default;
+    }
+    h2 {
+        color: #E74C3C;
+        letter-spacing: 0.1em;
+        text-shadow: 0 0 4px #E79C94;
+        margin-bottom: 50px;
+    }
+    hr {
+        border-color: #ECF0F1;
+    }
+
+    /********************** BARRE D'OUTILS **********************/
+
+    .toolbar {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 50px;
+    }
+    .toolbar ul {
+        /* Structure */
+        display: inline-block;
+        padding: 10px;
+        margin-bottom: 30px;
+
+        /* Présentation */
+        list-style-type: none;
+        background-color: rgba(255,255,255,0.5);
+    }
+    .toolbar ul li {
+        height: 2.5em;
+        margin-bottom: 0.5em;
+        text-align: left;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+    }
+    .toolbar ul li label {
+        /* Structure */
+        display: inline-block;
+        line-height: 2.5em;
+        width: 100px;
+
+        /* Présentation */
+        color: #2980B9;
+        font-weight: bold;
+    }
+
+    /********************** COULEURS DE CRAYON PREDEFINIES **********************/
+
+    #color {
+        margin-bottom: 30px;
+    }
+    .pen {
+        display: inline-flex;
+        flex-flow: row wrap;
+    }
+    .pen-color {
+        /* Structure */
+        display: inline-block;
+        height: 2em;
+        position: relative;
+        top: 0.5em;
+        width: 2em;
+
+        /* Présentation */
+        border-radius: 1em;
+    }
+    .pen-color.black {
+        background-color: black;
+    }
+    .pen-color.blue {
+        background-color: #0378A6;
+    }
+    .pen-color.green {
+        background-color: #13B813;
+    }
+    .pen-color.maroon {
+        background-color: #5C2121;
+    }
+    .pen-color.red {
+        background-color: #B9121B;
+    }
+    .pen-color.seagreen {
+        background-color: #029E9A;
+    }
+    .pen-color.yellow {
+        background-color: #FFBD07;
+    }
+
+    .pen-color + .pen-color {
+        margin-left: 1em;
+    }
+
+    /********************** PALETTE DE COULEURS **********************/
+
+    .color-palette {
+        cursor: crosshair;
+        vertical-align: middle;
+    }
+}
+
+/* Smartphone en paysage, tablette en portrait, petite tablette en paysage */
+@media all and (min-width: 480px) {
+
+    #color {
+        margin-bottom: 0.5em;
+    }
+}
+
+/* Tablette en paysage, ordinateur de taille petite et moyenne */
+@media all and (min-width: 960px) {
+
+    .toolbar ul {
+        padding: 20px;
+    }
+}
+
+/* Ordinateur de grande taille */
+@media all and (min-width: 1280px) {
+
+}

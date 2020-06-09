@@ -1,0 +1,42 @@
+<main>
+    <input type="hidden" id="files" value=<?= $files ?>>
+    <?php if($nbPictures > 0): ?>
+        <nav class="toolbar">
+            <a id="toolbar-toggle" href="#"><i class="fa fa-arrow-right"></i> Barre d'outils</a>
+            <ul class="hide">
+                <li>
+                    <button id="slider-previous" title="Dessin précédent"><i class="fa fa-backward"></i></button>
+                </li>
+                <li>
+                    <input type="number" min="1" id="timeout" placeholder="Timer en secondes">
+                    <button id="slider-toggle" title="Démarrer le carrousel"><i class="fa fa-play"></i></button>
+                </li>
+                <li>
+                    <button id="slider-next" title="Dessin suivant"><i class="fa fa-forward"></i></button>
+                </li>
+                <li>
+                    <input type="number" min="1" max="<?= $nbPictures ?>" id="drawing" placeholder="Numéro du dessin">
+                    <button id="slider-select" title="Sélectionner le dessin"><i class="fas fa-bullseye"></i></button>
+                </li>
+                <li>
+                    <a href="blog.php"><button>Tout afficher</button></a>
+                </li>
+            </ul>
+        </nav>
+        <noscript>
+            <p>
+                Pour accéder à cette fonctionnalité, vous devez activer JavaScript. Voici les
+                <a href="https://www.enable-javascript.com/fr/">instructions pour activer JavaScript dans votre navigateur Web</a>.
+            </p>
+        </noscript>
+        <figure id="slider" class="slider">
+            <figcaption id="name" class="hide"></figcaption>
+            <figure>
+                <embed class="rig">
+                <figcaption id="comment"></figcaption>
+            </figure>
+        </figure>
+    <?php else: ?>
+        <p id="nothing">Ce blog ne contient pas de dessin.</p>
+    <?php endif ?>
+</main>

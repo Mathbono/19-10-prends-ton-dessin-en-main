@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+/* Smartphone en portrait */
+@media all and (min-width: 0px) {
+
+    div.message {
+        display: inline-block;
+        position: relative;
+        width: 90%;
+        min-width: 125px;
+        background-color: rgba(255, 255, 255, 0.7);
+        margin: 10px 0;
+        padding: 25px 10px 0;
+        border-radius: 10px;
+        hyphens: auto;
+    }
+    div.message a {
+        color: inherit;
+    }
+    div.message .title {
+        font-weight: bold;
+    }
+    div.message .content {
+        text-shadow: none;
+    }
+    div.message .date {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+    div.message .user {
+
+    }
+}
+
+/* Smartphone en paysage, tablette en portrait, petite tablette en paysage */
+@media all and (min-width: 480px) {
+
+    div.message {
+        width: 80%;
+        padding: 25px 20px 15px;
+    }
+}
+
+/* Tablette en paysage, ordinateur de taille petite et moyenne */
+@media all and (min-width: 960px) {
+
+    div.message {
+        width: 70%;
+    }
+}
+
+/* Ordinateur de grande taille */
+@media all and (min-width: 1280px) {
+
+    div.message {
+        width: 60%;
+    }
+}

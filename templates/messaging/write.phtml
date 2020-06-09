@@ -1,0 +1,23 @@
+<main>
+    <h2>Écrire à un utilisateur</h2>
+    <form id="form" class="form" action="<?php $messaging ?>" method="post">
+        <fieldset>
+            <legend>Envoyer un message privé</legend>
+            <ul>
+                <li>
+                    <label for="receiver">Écrire à :</label>
+                    <input type="text" id="receiver" name="receiver">
+                </li>
+                <li>
+                    <label for="title">Titre :</label>
+                    <input type="text" id="title" class="string-min-15 string-max-255" name="title">
+                </li>
+                <li>
+                    <label for="courier">Message :</label>
+                    <textarea id="courier" class="string-min-15 string-max-10000" name="courier" cols="60" rows="8"></textarea>
+                </li>
+            </ul>
+        </fieldset>
+        <input type="submit" name="submit" value="Envoyer le message">
+    </form>
+</main>

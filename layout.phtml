@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Favicon et titre -->
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= $root ?>fav/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?= $root ?>fav/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?= $root ?>fav/favicon-16x16.png">
+        <link rel="manifest" href="<?= $root ?>fav/site.webmanifest">
+        <link rel="mask-icon" href="<?= $root ?>fav/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="<?= $root ?>fav/favicon.ico">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-config" content="<?= $root ?>fav/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        <title><?= $title ?></title>
+        <!-- Style global -->
+		<link rel="stylesheet" href="<?= $root ?>css/global/normalize.css" media="all">
+        <link rel="stylesheet" href="<?= $root ?>css/global/fontawesome-5.10.1.min.css" media="all">
+        <link rel="stylesheet" href="<?= $root ?>css/global/layout.css" media="screen">
+        <!-- Style local -->
+        <?php switch($templates): case 'blog/blog': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <?php break ?>
+            <?php case 'blog/ticket': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/slider.css" media="screen">
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+            <?php break ?>
+            <?php case 'connection/login': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/form.css" media="screen">
+                <?php break ?>
+            <?php case 'connection/register': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/form.css" media="screen">
+                <?php break ?>
+            <?php case 'connection/sendingpassword': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/form.css" media="screen">
+                <?php break ?>
+            <?php case 'contact': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/form.css" media="screen">
+                <?php break ?>
+            <?php case 'draw': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/pages/draw.css" media="screen">
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/form.css" media="screen">
+                <?php break ?>
+            <?php case 'error': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/pages/error.css" media="screen">
+                <?php break ?>
+            <?php case 'forum/creatingsubject': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/form.css" media="screen">
+                <?php break ?>
+            <?php case 'forum/messages': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/form.css" media="screen">
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/message.css" media="screen">
+            <?php break ?>
+            <?php case 'forum/mymessages': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/message.css" media="screen">
+                <?php break ?>
+            <?php case 'forum/mysubjects': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/table.css" media="screen">
+                <?php break ?>
+            <?php case 'forum/subjects': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/table.css" media="screen">
+                <?php break ?>
+            <?php case 'forum/themes': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/table.css" media="screen">
+                <?php break ?>
+            <?php case 'messaging/received': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/table.css" media="screen">
+                <?php break ?>
+            <?php case 'messaging/sent': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/table.css" media="screen">
+                <?php break ?>
+            <?php case 'messaging/write': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/form.css" media="screen">
+                <?php break ?>
+            <?php case 'mydrawings/drawing': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/slider.css" media="screen">
+                <?php break ?>
+            <?php case 'mydrawings/mydrawings': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+            <?php break ?>
+            <?php case 'mydrawings/myprivatedrawings': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <?php break ?>
+            <?php case 'mydrawings/mypublicdrawings': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <?php break ?>
+            <?php case 'search': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/message.css" media="screen">
+                <?php break ?>
+            <?php case 'searchdrawings/finduser': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/form.css" media="screen">
+                <?php break ?>
+            <?php case 'searchdrawings/searchdrawings': ?>
+                <link rel="stylesheet" href="<?= $root ?>css/local/components/counter.css" media="screen">
+                <?php break ?>
+            <?php default: ?>
+        <?php endswitch ?>
+        <!-- Script global -->
+		<script src="<?= $root ?>js/global/jquery-3.4.1.min.js"></script>
+		<script src="<?= $root ?>js/global/utilities.js"></script>
+        <script src="<?= $root ?>js/global/components/nav.js"></script>
+        <script src="<?= $root ?>js/global/components/flashbag.js"></script>
+        <script src="<?= $root ?>js/global/scrollbars.js"></script>
+        <script src="<?= $root ?>js/global/resize.js"></script>
+        <!-- Classes script local -->
+        <?php switch($templates): case 'draw': ?>
+                <script src="<?= $root ?>js/local/classes/ColorPalette.js"></script>
+                <script src="<?= $root ?>js/local/classes/Program.js"></script>
+                <script src="<?= $root ?>js/local/classes/Pen.js"></script>
+                <script src="<?= $root ?>js/local/classes/Frame.js"></script>
+                <?php break ?>
+            <?php default: ?>
+        <?php endswitch ?>
+        <!-- Script local -->
+        <?php switch($templates): case 'blog/blog': ?>
+                <?php break ?>
+            <?php case 'blog/ticket': ?>
+                <script src="<?= $root ?>js/local/components/slider.js"></script>
+                <?php break ?>
+            <?php case 'connection/login': ?>
+                <?php break ?>
+            <?php case 'connection/register': ?>
+                <script src="<?= $root ?>js/local/components/formvalidation.js"></script>
+                <?php break ?>
+            <?php case 'connection/sendingpassword': ?>
+                <?php break ?>
+            <?php case 'contact': ?>
+                <script src="<?= $root ?>js/local/components/formvalidation.js"></script>
+                <?php break ?>
+            <?php case 'draw': ?>
+                <script src="<?= $root ?>js/local/pages/draw.js"></script>
+                <?php break ?>
+            <?php case 'error': ?>
+                <?php break ?>
+            <?php case 'forum/creatingsubject': ?>
+                <script src="<?= $root ?>js/local/components/formvalidation.js"></script>
+                <?php break ?>
+            <?php case 'forum/messages': ?>
+                <script src="<?= $root ?>js/local/components/formvalidation.js"></script>
+                <?php break ?>
+            <?php case 'forum/mymessages': ?>
+                <?php break ?>
+            <?php case 'forum/mysubjects': ?>
+                <?php break ?>
+            <?php case 'forum/subjects': ?>
+                <?php break ?>
+            <?php case 'forum/themes': ?>
+                <?php break ?>
+            <?php case 'messaging/received': ?>
+                <?php break ?>
+            <?php case 'messaging/sent': ?>
+                <?php break ?>
+            <?php case 'messaging/write': ?>
+                <script src="<?= $root ?>js/local/components/formvalidation.js"></script>
+                <?php break ?>
+            <?php case 'mydrawings/drawing': ?>
+                <script src="<?= $root ?>js/local/components/slider.js"></script>
+                <?php break ?>
+            <?php case 'mydrawings/mydrawings': ?>
+                <script src="<?= $root ?>js/local/pages/statedrawing.js"></script>
+                <?php break ?>
+            <?php case 'mydrawings/myprivatedrawings': ?>
+                <?php break ?>
+            <?php case 'mydrawings/mypublicdrawings': ?>
+                <?php break ?>
+            <?php case 'search': ?>
+                <?php break ?>
+            <?php case 'searchdrawings/finduser': ?>
+                <?php break ?>
+            <?php case 'searchdrawings/searchdrawings': ?>
+                <?php break ?>
+            <?php default: ?>
+        <?php endswitch ?>
+    </head>
+	<body>
+        <div id="container">
+            <header>
+                <nav id="nav">
+                    <div class="menu">
+                        <a href="<?= $root ?>index.php">Accueil</a>
+                    </div>
+                    <div class="menu">
+                        <a href="<?= $app ?>aboutme.php">À propos de moi</a>
+                    </div>
+                    <div class="menu">
+                        <a href="<?= $app ?>blog/ticket.php">Blog</a>
+                        <div class="list">
+                            <a href="<?= $app ?>blog/blog.php">Tout afficher</a>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <a href="<?= $app ?>draw.php">Dessiner</a>
+                    </div>
+                    <div class="menu">
+                        <a href="<?= $app ?>searchdrawings/finduser.php">Voir les dessins</a>
+                    </div>
+                    <?php if($userSession->isLogged()): ?>
+                        <div class="menu">
+                            <a href="<?= $app ?>mydrawings/drawing.php">Mes dessins</a>
+                            <div class="list">
+                                <a href="<?= $app ?>mydrawings/mydrawings.php">Gérer mes dessins</a>
+                                <a href="<?= $app ?>mydrawings/mypublicdrawings.php">Gérer mes dessins publics</a>
+                                <a href="<?= $app ?>mydrawings/myprivatedrawings.php">Gérer mes dessins privés</a>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                    <div class="menu">
+                        <a href="<?= $app ?>forum/themes.php">Forum</a>
+                        <?php if($userSession->isLogged()): ?>
+                            <div class="list">
+                                <a href="<?= $app ?>forum/mysubjects.php">Mes sujets de discussion</a>
+                                <a href="<?= $app ?>forum/creatingsubject.php">Créer un sujet</a>
+                                <a href="<?= $app ?>forum/mymessages.php">Tous mes messages</a>
+                            </div>
+                        <?php endif ?>
+                    </div>
+                    <?php if($userSession->isLogged()): ?>
+                        <div class="menu">
+                            <a href="<?= $app ?>messaging/received.php">Messagerie</a>
+                            <div class="list">
+                                <a href="<?= $app ?>messaging/write.php">Écrire un message</a>
+                                <a href="<?= $app ?>messaging/sent.php">Messages envoyés</a>
+                            </div>
+                        </div>
+                        <div class="menu">
+                            <a href="<?= $app ?>contact.php">Contact</a>
+                        </div>
+                    <?php endif ?>
+                    <div class="menu">
+                        <?php if($userSession->isLogged()): ?>
+                            <?= 'Bonjour '?>
+                            <?= $userSession->getLogin() ?>
+                            <?= ' !<br><a id="logout" href="' ?>
+                            <?= $app . 'connection/logout.php">Me déconnecter</a>' ?>
+                        <?php else: ?>
+                            <a id="login" href="<?= $app ?>connection/login.php"><i class="fas fa-lock"></i>M'identifier</a>
+                        <?php endif ?>
+                    </div>
+                    <?php switch($templates): case 'blog/blog': ?>
+                            <div class="menu">
+                                <form action="<?php $search ?>" method="post">
+                                    <input type="search" name="word" placeholder="Rechercher dans le blog">
+                                    <br>
+                                    <input type="submit" name="searchBlog" value="Chercher">
+                                </form>
+                            </div>
+                            <?php break ?>
+                        <?php case 'mydrawings/mydrawings': ?>
+                            <?php if($userSession->isLogged()): ?>
+                                <div class="menu">
+                                    <form action="<?php $search ?>" method="post">
+                                        <input type="search" name="word" placeholder="Rechercher dans mes dessins">
+                                        <br>
+                                        <input type="submit" name="searchMyDrawings" value="Chercher">
+                                    </form>
+                                </div>
+                            <?php endif ?>
+                            <?php break ?>
+                        <?php case 'forum/themes': ?>
+                            <div class="menu">
+                                <form action="<?php $search ?>" method="post">
+                                    <input type="search" name="word" placeholder="Rechercher dans le forum">
+                                    <br>
+                                    <input type="submit" name="searchForum" value="Chercher">
+                                </form>
+                            </div>
+                            <?php break ?>
+                        <?php case 'forum/subjects': ?>
+                            <div class="menu">
+                                <form action="<?php $search ?>" method="post">
+                                    <input type="search" name="word" placeholder="Rechercher dans les sujets">
+                                    <br>
+                                    <input type="submit" name="searchSubjects" value="Chercher">
+                                </form>
+                            </div>
+                            <?php break ?>
+                        <?php case 'forum/messages': ?>
+                            <div class="menu">
+                                <form action="<?php $search ?>" method="post">
+                                    <input type="search" name="word" placeholder="Rechercher dans les messages">
+                                    <br>
+                                    <input type="submit" name="searchMessages" value="Chercher">
+                                </form>
+                            </div>
+                            <?php break ?>
+                        <?php case 'forum/mysubjects': ?>
+                            <?php if($userSession->isLogged()): ?>
+                                <div class="menu">
+                                    <form action="<?php $search ?>" method="post">
+                                        <input type="search" name="word" placeholder="Rechercher dans mes sujets">
+                                        <br>
+                                        <input type="submit" name="searchMySubjects" value="Chercher">
+                                    </form>
+                                </div>
+                            <?php endif ?>
+                            <?php break ?>
+                        <?php case 'forum/mymessages': ?>
+                            <?php if($userSession->isLogged()): ?>
+                                <div class="menu">
+                                    <form action="<?php $search ?>" method="post">
+                                        <input type="search" name="word" placeholder="Rechercher dans mes messages">
+                                        <br>
+                                        <input type="submit" name="searchMyMessages" value="Chercher">
+                                    </form>
+                                </div>
+                            <?php endif ?>
+                            <?php break ?>
+                        <?php default: ?>
+                    <?php endswitch ?>
+                </nav>
+                <?php if($flash->hasMessages()): ?>
+                    <aside class="menu">
+                        <?php foreach($flash->fetchMessages() as $message): ?>
+                            <a><?= $message ?></a>
+                        <?php endforeach ?>
+                    </aside>
+                <?php endif ?>
+                <?php if($message = isset($_GET['flash']) ? $_GET['flash'] : null): ?>
+                    <aside class="menu">
+                        <a><?= $message ?></a>
+                    </aside>
+                <?php endif ?>
+            </header>
+            <?php require_once 'templates/' . $templates . '.phtml' ?>
+        </div>
+		<footer>
+			<p>
+                <?php if(($guest['nbr_visited'] > 1)): ?>
+                    <?= $guest['nbr_visited'] ?> internautes différents ont visité ce site
+                <?php endif ?>
+			</p>
+            <p>
+                L'image d'arrière-plan est une œuvre de
+                <a href="https://www.dimitramilan.com/">Dimitra Milan</a>
+                <br>
+                Elle n'a pas été modifiée en vertu de la licence
+                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.fr">CC BY-NC-ND 4.0</a>
+            </p>
+            <p>
+                La quasi-totalité des dessins du blog ont pour modèle ceux du premier volume du <em>Dessin Jap'Animé</em>
+                <q>&nbsp;<strong>Construire ses personnages</strong>&nbsp;</q> de Tadashi Ozawa ou du deuxième
+                volume du <em>Dessin de manga</em> <q>&nbsp;<strong>Le corps humain</strong>&nbsp;</q> (collectif), tous deux du Groupe Eyrolles
+            </p>
+            <p>
+                Les informations personnelles que vous fournissez ne passent par aucune forme d'exploitation
+                <br>
+                Aucune personne en charge du site n'a d'accès en clair aux mots de passe que vous enregistrez
+            </p>
+            <p>
+                La démonstration de haine sous toutes ses formes n'est pas tolérée
+                <br>
+                Tout contrevenant sera exclu du site après examen de la situation
+            </p>
+            <p>
+                Dédicace spéciale à Jean-Benoît pour son soutien
+            </p>
+		</footer>
+    </body>
+</html>

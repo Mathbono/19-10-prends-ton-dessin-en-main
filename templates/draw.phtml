@@ -1,0 +1,67 @@
+<main>
+    <h2><i class="fas fa-pencil-alt"></i> Dessiner</h2>
+    <canvas id="slate" class="slate rig"></canvas>
+    <hr>
+    <noscript>
+        <p>
+            Pour accéder à cette fonctionnalité, vous devez activer JavaScript. Voici les
+            <a href="https://www.enable-javascript.com/fr/">instructions pour activer JavaScript dans votre navigateur Web</a>.
+        </p>
+    </noscript>
+    <nav class="toolbar">
+        <ul>
+            <li>
+                <label>Outils</label>
+                <button id="tool-clear-canvas" title="Gomme"><i class="fas fa-eraser"></i></button>
+                <button id="tool-color-picker" title="Gouache"><i class="fas fa-fill"></i></button>
+            </li>
+            <li id="color">
+                <label>Couleur</label>
+                <div class="pen">
+                    <div class="pen-color black" data-color="black"></div>
+                    <div class="pen-color maroon" data-color="#5C2121"></div>
+                    <div class="pen-color red" data-color="#B9121B"></div>
+                    <div class="pen-color yellow" data-color="#FFBD07"></div>
+                    <div class="pen-color green" data-color="#13B813"></div>
+                    <div class="pen-color seagreen" data-color="#029E9A"></div>
+                    <div class="pen-color blue" data-color="#0378A6"></div>
+                </div>
+            </li>
+            <li>
+                <label>Épaisseur</label>
+                <button class="pen-size" data-size="1">Fin</button>
+                <button class="pen-size" data-size="2">Normal</button>
+                <button class="pen-size" data-size="25">Épais</button>
+            </li>
+        </ul>
+    </nav>
+    <canvas id="color-palette" class="color-palette hide" width="256px" height="256px"></canvas>
+    <form class="form">
+        <label for="download">Récupérer sur votre appareil :</label>
+        <a id="download" onclick="download_canvas(this)">
+            <input type="submit" value="Télécharger votre dessin">
+        </a>
+    </form>
+    <?php if($userSession->isLogged()): ?>
+        <form class="form">
+            <label for="save">Récupérer dans votre espace perso :</label>
+            <a id="save" onclick="save_canvas(this)">
+                <input type="submit" value="Enregistrer dans Mes dessins">
+            </a>
+        </form>
+        <form class="form" action="<?php $file ?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+            <input type="hidden" name="dirPicture" value="<?= $dirPicture ?>">
+            <input type="hidden" name="dirComment" value="<?= $dirComment ?>">
+            <label for="userfile">Vous avez déjà un dessin sur votre appareil ?</label>
+            <fieldset>
+                <legend>Récupérer n'importe quel dessin dans votre espace perso</legend>
+                <input type="file" id="userfile" name="userfile"
+                       accept="image/gif, image/x-icon, image/jpeg, image/png, image/svg+xml, image/tiff, image/webp,
+                            application/pdf">
+            </fieldset>
+            <input type="submit" name="submit" value="Enregistrer un fichier">
+        </form>
+    <?php else: ?>
+    <?php endif ?>
+</main>

@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+/* Smartphone en portrait */
+@media all and (min-width: 0px) {
+
+    table {
+        border: medium solid #6495ed;
+        border-collapse: collapse;
+        hyphens: auto;
+    }
+    table a {
+        color: inherit;
+    }
+    th, td {
+        border: thin solid #6495ed;
+        text-align: center;
+        width: 50%;
+        padding: 5px;
+    }
+    th {
+        font-family: monospace;
+        background-color: #D0E3FA;
+    }
+    td {
+        font-family: sans-serif;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    #themes th:nth-child(2),
+    #themes td:nth-child(2) {
+        display: none;
+    }
+    #subjects th:nth-child(2),
+    #subjects td:nth-child(2),
+    #subjects th:nth-child(3),
+    #subjects td:nth-child(3),
+    #subjects th:nth-child(4),
+    #subjects td:nth-child(4) {
+        display: none;
+    }
+    #mysubjects th:nth-child(2),
+    #mysubjects td:nth-child(2),
+    #mysubjects th:nth-child(3),
+    #mysubjects td:nth-child(3){
+        display: none;
+    }
+    #receivedcouriers th:nth-child(2),
+    #receivedcouriers td:nth-child(2),
+    #receivedcouriers th:nth-child(4),
+    #receivedcouriers td:nth-child(4),
+    #sentcouriers th:nth-child(2),
+    #sentcouriers td:nth-child(2),
+    #sentcouriers th:nth-child(4),
+    #sentcouriers td:nth-child(4) {
+        display: none;
+    }
+    #receivedcouriers td:nth-child(2) {
+        text-align: justify;
+    }
+    #sentcouriers td:nth-child(2) {
+        text-align: justify;
+    }
+}
+
+/* Smartphone en paysage, tablette en portrait, petite tablette en paysage */
+@media all and (min-width: 480px) {
+
+    #themes th:nth-child(2),
+    #themes td:nth-child(2) {
+        display: table-cell;
+    }
+    #themes th:nth-child(2),
+    #themes td:nth-child(2),
+    #themes th:nth-child(3),
+    #themes td:nth-child(3) {
+        width: 10%;
+    }
+    #subjects th:nth-child(1),
+    #subjects td:nth-child(1) {
+        width: 80%;
+    }
+    #subjects th:nth-child(2),
+    #subjects td:nth-child(2),
+    #subjects th:nth-child(4),
+    #subjects td:nth-child(4) {
+        display: table-cell;
+    }
+    #mysubjects th:nth-child(1),
+    #mysubjects td:nth-child(1) {
+        width: 80%;
+    }
+    #mysubjects th:nth-child(2),
+    #mysubjects td:nth-child(2) {
+        display: table-cell;
+    }
+    #receivedcouriers th:nth-child(2),
+    #receivedcouriers td:nth-child(2),
+    #sentcouriers th:nth-child(2),
+    #sentcouriers td:nth-child(2) {
+        display: table-cell;
+    }
+}
+
+/* Tablette en paysage, ordinateur de taille petite et moyenne */
+@media all and (min-width: 960px) {
+
+    #subjects th:nth-child(3),
+    #subjects td:nth-child(3) {
+        display: table-cell;
+    }
+    #mysubjects th:nth-child(3),
+    #mysubjects td:nth-child(3) {
+        display: table-cell;
+    }
+    #receivedcouriers th:nth-child(4),
+    #receivedcouriers td:nth-child(4),
+    #sentcouriers th:nth-child(4),
+    #sentcouriers td:nth-child(4) {
+        display: table-cell;
+    }
+}
+
+/* Ordinateur de grande taille */
+@media all and (min-width: 1280px) {
+
+}

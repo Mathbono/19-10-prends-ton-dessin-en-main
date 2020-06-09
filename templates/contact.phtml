@@ -1,0 +1,31 @@
+<main>
+    <h2>Contact administrateur</h2>
+    <form id="form" class="form" action="<?php $mail ?>" method="post">
+        <fieldset>
+            <legend>Nous envoyer un message</legend>
+            <ul>
+                <li>
+                    <label for="object">Objet :</label>
+                    <select id="object" name="object">
+                        <option value="Objet du message" selected>Objet du message</option>
+                        <option value="Suggérer un thème">Suggérer un thème</option>
+                        <option value="Suggérer une fonctionnalité">Suggérer une fonctionnalité</option>
+                        <option value="Signaler un abus">Signaler un abus</option>
+                        <option value="Signaler un utilisateur malveillant">Signaler un utilisateur malveillant</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="message">Message :</label>
+                    <textarea id="message" class="string-min-5 string-max-10000" name="message" cols="75" rows="10"></textarea>
+                </li>
+                <li>
+                    <label for="captcha">Recopier le mot :</label>
+                    <span><?= $text ?></span>
+                    <input type="text" id="captcha" class="string-min-1 string-max-50 empty" name="captcha">
+                </li>
+            </ul>
+        </fieldset>
+        <input type="submit" name="submit" value="Envoyer le message">
+    </form>
+</main>

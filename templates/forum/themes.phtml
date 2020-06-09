@@ -1,0 +1,30 @@
+<main>
+    <h1>Forum</h1>
+    <?php if($userSession->isLogged()): ?>
+        <div id="link">
+            <a href="mysubjects.php"><button>Mes sujets de discussion</button></a>
+            <a href="creatingsubject.php"><button>Créer un sujet</button></a>
+            <a href="mymessages.php"><button>Tous mes messages</button></a>
+        </div>
+    <?php endif ?>
+    <h2>Liste des thèmes</h2>
+    <table id="themes">
+        <thead>
+            <tr>
+                <th>Thème</th>
+                <th>Nombre de sujets</th>
+                <th>Dernier sujet</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($themes as $theme): ?>
+                <tr>
+                    <td><a href="subjects.php?idTheme=<?= $theme['id_theme'] ?>"><?= $theme['title'] ?></a></td>
+                    <td><?= $nbSubjects[$i] ?></td>
+                    <td><?= $datetimeLastSubject[$i] ?></td>
+                </tr>
+                <?php $i++ ?>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</main>

@@ -1,0 +1,41 @@
+<main>
+    <h2>Inscription</h2>
+    <form id="form" class="form" action="<?php $reg ?>" method="post">
+        <fieldset>
+            <legend>Identifiants de connexion</legend>
+            <ul>
+                <li>
+                    <label for="login">Pseudo :</label>
+                    <input type="text" id="login" class="string-min-8 string-max-50" name="login">
+                </li>
+                <li>
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" class="string-max-50" data-type="password" name="password">
+                </li>
+                <li>
+                    <label for="verifpassword">Confirmation du mot de passe :</label>
+                    <input type="password" id="verifpassword" data-type="verifpassword" name="verifpassword">
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>Informations nominatives</legend>
+            <ul>
+                <li>
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" class="string-min-2 string-max-50" name="name">
+                </li>
+                <li>
+                    <label for="firstname">Prénom :</label>
+                    <input type="text" id="firstname" class="string-min-2 string-max-50" name="firstname">
+                </li>
+                <li>
+                    <label for="email">E-mail :</label>
+                    <input type="text" id="email" data-type="email" name="email">
+                </li>
+            </ul>
+        </fieldset>
+        <input type="submit" name="submit" value="Je m'enregistre">
+        <input type="reset">
+    </form>
+</main>

@@ -1,0 +1,22 @@
+<main>
+    <h2>Connexion</h2>
+    <form class="form" action="<?php $log ?>" method="post">
+        <fieldset>
+            <legend>Identifiants de connexion</legend>
+            <ul>
+                <li>
+                    <label for="login">Pseudo :</label>
+                    <input type="text" id="login" name="login">
+                </li>
+                <li>
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password">
+                </li>
+            </ul>
+        </fieldset>
+        <input type="submit" name="submit" value="Je me connecte">
+        <label>Pas encore membre ?</label>
+        <button><a href="register.php">S'enregistrer</a></button>
+        <button><a href="sendingpassword.php">Mot de passe oublié ?</a></button>
+    </form>
+</main>

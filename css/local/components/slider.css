@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/* Smartphone en portrait */
+@media all and (min-width: 0px) {
+
+    .slider {
+        /* Obligatoire pour éviter l'effet de crénelage sous Chrome */
+        -webkit-backface-visibility: hidden;
+        text-align: center;
+        transform-origin: 50% 50%;
+    }
+    .toolbar {
+        text-align: center;
+    }
+    .toolbar #toolbar-toggle {
+        padding: 10px 5px;
+        border-top: 3px solid #59cd27;
+        border-bottom: 7px solid #4753f3;
+        border-radius: 75%;
+        font-weight: bold;
+        color: #555;
+        background: #fff;
+        box-shadow: 2px 2px 3px #999;
+    }
+    .toolbar ul {
+        /* Structure */
+        padding-left: 0;
+
+        /* Présentation */
+        list-style-type: none;
+    }
+    .toolbar ul li {
+        display: inline-block;
+    }
+    .toolbar ul li + li {
+        margin-left: 1em;
+    }
+    #slider {
+        margin-top: 30px;
+    }
+}
+
+/* Smartphone en paysage, tablette en portrait, petite tablette en paysage */
+@media all and (min-width: 480px) {
+
+}
+
+/* Tablette en paysage, ordinateur de taille petite et moyenne */
+@media all and (min-width: 960px) {
+
+}
+
+/* Ordinateur de grande taille */
+@media all and (min-width: 1280px) {
+
+}

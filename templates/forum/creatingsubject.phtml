@@ -1,0 +1,29 @@
+<main>
+    <h1>Forum</h1>
+    <h2>Nouveau sujet</h2>
+    <form id="form" class="form" action="<?php $forum ?>" method="post">
+        <input type="hidden" name="limit" value="<?= $limit ?>">
+        <fieldset>
+            <legend>Titre du sujet et message l'initiant</legend>
+            <ul>
+                <li>
+                    <label for="theme">Thème :</label>
+                    <select id="theme" name="theme">
+                        <?php foreach ($themes as $theme): ?>
+                            <option value="<?= $theme['id_theme'] ?>"><?= $theme['title'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </li>
+                <li>
+                    <label for="subject">Sujet :</label>
+                    <input type="text" id="subject" class="string-min-15 string-max-255" name="subject">
+                </li>
+                <li>
+                    <label for="message">Message :</label>
+                    <textarea id="message" class="string-min-15 string-max-10000" name="message" cols="75" rows="10"></textarea>
+                </li>
+            </ul>
+        </fieldset>
+        <input type="submit" name="submit" value="Nouveau sujet">
+    </form>
+</main>

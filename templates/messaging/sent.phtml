@@ -1,0 +1,115 @@
+<main>
+    <h2>Messages envoyés</h2>
+    <nav class="counter">
+        <?php if($page > 1): ?>
+            <a class="stream" href="?page=<?= $page - 1 ?>"><i class="fas fa-chevron-left"></i> Précédent</a>
+            <a href="?page=<?= 1 ?>"><?= 1 ?></a>
+            <?php if($page < 9): ?>
+                ...
+            <?php endif ?>
+        <?php endif ?>
+        <?php if($page >= 9): ?>
+            <a href="?page=<?= ceil($page / 3) ?>"><?= ceil($page / 3) ?></a>
+            <a href="?page=<?= ceil($page * 2 / 3) ?>"><?= ceil($page * 2 / 3) ?></a>
+            ...
+        <?php endif ?>
+        <?php if($page >= 3): ?>
+            <?php for($i = $page - 2; $i < $page; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if($nbPages > 1): ?>
+            <a class="current" href="?page=<?= $page ?>"><?= $page ?></a>
+        <?php endif ?>
+        <?php if($page <= $nbPages - 2): ?>
+            <?php for($i = $page + 1; $i <= $page + 2; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) >= 3): ?>
+            ...
+            <a href="?page=<?= ceil(1/3 * ($nbPages - $page) + $page) ?>"><?= ceil(1/3 * ($nbPages - $page) + $page) ?></a>
+            <a href="?page=<?= ceil(2/3 * ($nbPages - $page) + $page) ?>"><?= ceil(2/3 * ($nbPages - $page) + $page) ?></a>
+        <?php endif ?>
+        <?php if($page < $nbPages): ?>
+            <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) < 3): ?>
+                ...
+            <?php endif ?>
+            <a href="?page=<?= $nbPages ?>"><?= $nbPages ?></a>
+            <a class="stream" href="?page=<?= $page + 1 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php endif ?>
+    </nav>
+    <div id="link">
+        <a href="received.php"><button>Messages reçus</button></a>
+        <a href="write.php"><button>Écrire un message</button></a>
+    </div>
+    <?php if($nbSentCouriers > 0): ?>
+        <table id="sentcouriers">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Message</th>
+                    <th>Destinataire</th>
+                    <th>Envoyé le</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($sentCouriers as $sentCourier): ?>
+                    <tr>
+                        <td><?= $sentCourier['title'] ?></td>
+                        <td><?= $sentCourier['content'] ?></td>
+                        <td>
+                            <?php $receiver = $db->queryOne('SELECT id_user, login FROM users WHERE id_user = ?', [$sentCourier['id_receiver']]) ?>
+                            <a href="<?= $app . 'searchdrawings/searchdrawings.php?id=' . $receiver['id_user'] ?>"><?= $receiver['login'] ?></a>
+                        </td>
+                        <td><?= $sentCourier['created_at'] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p id="nothing">
+            Vous n'avez pas envoyé de message.
+            <a href="write.php"><button>Écrire un message</button></a>
+        </p>
+    <?php endif ?>
+    <nav class="counter">
+        <?php if($page > 1): ?>
+            <a class="stream" href="?page=<?= $page - 1 ?>"><i class="fas fa-chevron-left"></i> Précédent</a>
+            <a href="?page=<?= 1 ?>"><?= 1 ?></a>
+            <?php if($page < 9): ?>
+                ...
+            <?php endif ?>
+        <?php endif ?>
+        <?php if($page >= 9): ?>
+            <a href="?page=<?= ceil($page / 3) ?>"><?= ceil($page / 3) ?></a>
+            <a href="?page=<?= ceil($page * 2 / 3) ?>"><?= ceil($page * 2 / 3) ?></a>
+            ...
+        <?php endif ?>
+        <?php if($page >= 3): ?>
+            <?php for($i = $page - 2; $i < $page; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if($nbPages > 1): ?>
+            <a class="current" href="?page=<?= $page ?>"><?= $page ?></a>
+        <?php endif ?>
+        <?php if($page <= $nbPages - 2): ?>
+            <?php for($i = $page + 1; $i <= $page + 2; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) >= 3): ?>
+            ...
+            <a href="?page=<?= ceil(1/3 * ($nbPages - $page) + $page) ?>"><?= ceil(1/3 * ($nbPages - $page) + $page) ?></a>
+            <a href="?page=<?= ceil(2/3 * ($nbPages - $page) + $page) ?>"><?= ceil(2/3 * ($nbPages - $page) + $page) ?></a>
+        <?php endif ?>
+        <?php if($page < $nbPages): ?>
+            <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) < 3): ?>
+                ...
+            <?php endif ?>
+            <a href="?page=<?= $nbPages ?>"><?= $nbPages ?></a>
+            <a class="stream" href="?page=<?= $page + 1 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php endif ?>
+    </nav>
+</main>

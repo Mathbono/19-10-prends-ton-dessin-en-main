@@ -1,0 +1,16 @@
+<main>
+    <?php if(array_key_exists('search', $_SESSION)): ?>
+        <?php foreach($_SESSION['search'] as $unit): ?>
+            <div class="message">
+                <div class="title"><?= @$unit['title'] ?></div>
+                <p class="content"><?= @$unit['content'] ?></p>
+            </div>
+        <?php endforeach ?>
+    <?php endif ?>
+    <?php if(empty($_SESSION['search'])): ?>
+        <p>
+            La recherche n'a donné aucun résultat.
+        </p>
+    <?php endif ?>
+    <?php unset($_SESSION['search']) ?>
+</main>

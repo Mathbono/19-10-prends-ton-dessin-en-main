@@ -1,0 +1,144 @@
+<main>
+    <nav class="side counter">
+        <?php if($page > 1): ?>
+            <a class="stream" href="?page=<?= $page - 1 ?>"><i class="fas fa-chevron-left"></i> Précédent</a>
+            <a href="?page=<?= 1 ?>"><?= 1 ?></a>
+            <?php if($page < 9): ?>
+                ...
+            <?php endif ?>
+        <?php endif ?>
+        <?php if($page >= 9): ?>
+            <a href="?page=<?= ceil($page / 3) ?>"><?= ceil($page / 3) ?></a>
+            <a href="?page=<?= ceil($page * 2 / 3) ?>"><?= ceil($page * 2 / 3) ?></a>
+            ...
+        <?php endif ?>
+        <?php if($page >= 3): ?>
+            <?php for($i = $page - 2; $i < $page; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if($nbPages > 1): ?>
+            <a class="current" href="?page=<?= $page ?>"><?= $page ?></a>
+        <?php endif ?>
+        <?php if($page <= $nbPages - 2): ?>
+            <?php for($i = $page + 1; $i <= $page + 2; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) >= 3): ?>
+            ...
+            <a href="?page=<?= ceil(1/3 * ($nbPages - $page) + $page) ?>"><?= ceil(1/3 * ($nbPages - $page) + $page) ?></a>
+            <a href="?page=<?= ceil(2/3 * ($nbPages - $page) + $page) ?>"><?= ceil(2/3 * ($nbPages - $page) + $page) ?></a>
+        <?php endif ?>
+        <?php if($page < $nbPages): ?>
+            <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) < 3): ?>
+                ...
+            <?php endif ?>
+            <a href="?page=<?= $nbPages ?>"><?= $nbPages ?></a>
+            <a class="stream" href="?page=<?= $page + 1 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php endif ?>
+    </nav>
+    <?php if($nbPictures > 0): ?>
+        <noscript>
+            <p>
+                Pour accéder à cette fonctionnalité, vous devez activer JavaScript. Voici les
+                <a href="https://www.enable-javascript.com/fr/">instructions pour activer JavaScript dans votre navigateur Web</a>.
+            </p>
+        </noscript>
+        <?php for($i = ($page - 1) * $limit + 1; ($i <= $page * $limit) && ($i <= $nbPictures); $i++): ?>
+            <figure class="drawings">
+                <figcaption>
+                    <p class="titledrawing"><?= stristr($contentDirPicture[$i - 1], '.', true) ?></p>
+                </figcaption>
+                <figure>
+                    <embed class="rig" src="<?= $dirPicture . $contentDirPicture[$i - 1] ?>">
+                    <figcaption>
+                        <?php $comment = @file_get_contents($dirComment . stristr($contentDirPicture[$i - 1], '.', true) . '.txt') ?>
+                        <p class="commentdrawing"><?= $comment ?></p>
+                        <form action="<?php $file ?>" method="post">
+                            <input type="hidden" name="dirPicture" value="<?= $dirPicture ?>">
+                            <input type="hidden" name="picture" value="<?= $contentDirPicture[$i - 1] ?>">
+                            <input type="submit" name="submit" value="Rendre <?= !in_array($contentDirPicture[$i - 1], array_diff(scandir($dirPicture . 'private/'), array('..', '.'))) ? 'privé' : 'public' ?>">
+                        </form>
+                        <form action="<?php $file ?>" method="post">
+                            <input type="hidden" name="dirPicture" value="<?= $dirPicture ?>">
+                            <input type="hidden" name="dirComment" value="<?= $dirComment ?>">
+                            <input type="hidden" name="picture" value="<?= $contentDirPicture[$i - 1] ?>">
+                            <input type="text" name="name">
+                            <input type="submit" name="submit" value="Renommer le dessin">
+                        </form>
+                        <form action="<?php $file ?>" method="post">
+                            <input type="hidden" name="dirComment" value="<?= $dirComment ?>">
+                            <input type="hidden" name="picture" value="<?= $contentDirPicture[$i - 1] ?>">
+                            <textarea name="comment" cols="60" rows="8"></textarea>
+                            <input type="submit" name="submit" value="Ajouter/Modifier le commentaire">
+                        </form>
+                        <form action="<?php $file ?>" method="post">
+                            <input type="hidden" name="dirPicture" value="<?= $dirPicture ?>">
+                            <input type="hidden" name="picture" value="<?= $contentDirPicture[$i - 1] ?>">
+                            <input type="submit" name="submit" value="Télécharger le dessin">
+                        </form>
+                        <form action="<?php $file ?>" method="post">
+                            <input type="hidden" name="dirComment" value="<?= $dirComment ?>">
+                            <input type="hidden" name="comment" value="<?= stristr($contentDirPicture[$i - 1], '.', true) . '.txt' ?>">
+                            <input type="submit" name="submit" value="Télécharger le commentaire">
+                        </form>
+                        <form action="<?php $file ?>" method="post">
+                            <input type="hidden" name="dirComment" value="<?= $dirComment ?>">
+                            <input type="hidden" name="comment" value="<?= stristr($contentDirPicture[$i - 1], '.', true) . '.txt' ?>">
+                            <input type="submit" name="submit" value="Supprimer le commentaire">
+                        </form>
+                        <form action="<?php $file ?>" method="post">
+                            <input type="hidden" name="dirPicture" value="<?= $dirPicture ?>">
+                            <input type="hidden" name="dirComment" value="<?= $dirComment ?>">
+                            <input type="hidden" name="picture" value="<?= $contentDirPicture[$i - 1] ?>">
+                            <input type="hidden" name="comment" value="<?= stristr($contentDirPicture[$i - 1], '.', true) . '.txt' ?>">
+                            <input type="submit" name="submit" value="Tout supprimer">
+                        </form>
+                    </figcaption>
+                </figure>
+            </figure>
+        <?php endfor ?>
+    <?php else: ?>
+        <p id="nothing">Vous n'avez pas de dessin public.</p>
+    <?php endif ?>
+    <nav class="side counter">
+        <?php if($page > 1): ?>
+            <a class="stream" href="?page=<?= $page - 1 ?>"><i class="fas fa-chevron-left"></i> Précédent</a>
+            <a href="?page=<?= 1 ?>"><?= 1 ?></a>
+            <?php if($page < 9): ?>
+                ...
+            <?php endif ?>
+        <?php endif ?>
+        <?php if($page >= 9): ?>
+            <a href="?page=<?= ceil($page / 3) ?>"><?= ceil($page / 3) ?></a>
+            <a href="?page=<?= ceil($page * 2 / 3) ?>"><?= ceil($page * 2 / 3) ?></a>
+            ...
+        <?php endif ?>
+        <?php if($page >= 3): ?>
+            <?php for($i = $page - 2; $i < $page; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if($nbPages > 1): ?>
+            <a class="current" href="?page=<?= $page ?>"><?= $page ?></a>
+        <?php endif ?>
+        <?php if($page <= $nbPages - 2): ?>
+            <?php for($i = $page + 1; $i <= $page + 2; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) >= 3): ?>
+            ...
+            <a href="?page=<?= ceil(1/3 * ($nbPages - $page) + $page) ?>"><?= ceil(1/3 * ($nbPages - $page) + $page) ?></a>
+            <a href="?page=<?= ceil(2/3 * ($nbPages - $page) + $page) ?>"><?= ceil(2/3 * ($nbPages - $page) + $page) ?></a>
+        <?php endif ?>
+        <?php if($page < $nbPages): ?>
+            <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) < 3): ?>
+                ...
+            <?php endif ?>
+            <a href="?page=<?= $nbPages ?>"><?= $nbPages ?></a>
+            <a class="stream" href="?page=<?= $page + 1 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php endif ?>
+    </nav>
+</main>

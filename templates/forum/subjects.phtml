@@ -1,0 +1,129 @@
+<main>
+    <h1>Forum</h1>
+    <?php $theme = $db->queryOne('SELECT title FROM themes WHERE id_theme = ?', [$idTheme]) ?>
+    <h2>Liste des sujets</h2>
+    <h3><?= $theme['title'] ?></h3>
+    <nav class="counter">
+        <?php if($page > 1): ?>
+            <a class="stream" href="?idTheme=<?= $idTheme ?>&page=<?= $page - 1 ?>"><i class="fas fa-chevron-left"></i> Précédent</a>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= 1 ?>"><?= 1 ?></a>
+            <?php if($page < 9): ?>
+                ...
+            <?php endif ?>
+        <?php endif ?>
+        <?php if($page >= 9): ?>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= ceil($page / 3) ?>"><?= ceil($page / 3) ?></a>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= ceil($page * 2 / 3) ?>"><?= ceil($page * 2 / 3) ?></a>
+            ...
+        <?php endif ?>
+        <?php if($page >= 3): ?>
+            <?php for($i = $page - 2; $i < $page; $i++): ?>
+                <a href="?idTheme=<?= $idTheme ?>&page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if($nbPages > 1): ?>
+            <a class="current" href="?idTheme=<?= $idTheme ?>&page=<?= $page ?>"><?= $page ?></a>
+        <?php endif ?>
+        <?php if($page <= $nbPages - 2): ?>
+            <?php for($i = $page + 1; $i <= $page + 2; $i++): ?>
+                <a href="?idTheme=<?= $idTheme ?>&page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) >= 3): ?>
+            ...
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= ceil(1/3 * ($nbPages - $page) + $page) ?>"><?= ceil(1/3 * ($nbPages - $page) + $page) ?></a>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= ceil(2/3 * ($nbPages - $page) + $page) ?>"><?= ceil(2/3 * ($nbPages - $page) + $page) ?></a>
+        <?php endif ?>
+        <?php if($page < $nbPages): ?>
+            <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) < 3): ?>
+                ...
+            <?php endif ?>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= $nbPages ?>"><?= $nbPages ?></a>
+            <a class="stream" href="?idTheme=<?= $idTheme ?>&page=<?= $page + 1 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php endif ?>
+    </nav>
+    <?php if($nbSubjects > 0): ?>
+        <table id="subjects">
+            <thead>
+                <tr>
+                    <th>Sujet</th>
+                    <th>Auteur</th>
+                    <th>Créé le</th>
+                    <th>Nombre de messages</th>
+                    <th>Dernier message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($subjects as $subject): ?>
+                    <tr>
+                        <td>
+                            <a href="messages.php?idSubject=<?= $subject['id_subject'] ?>"><?= $subject['title'] ?></a>
+                        </td>
+                        <td>
+                            <?php $user = $db->queryOne('SELECT id_user, login FROM users WHERE id_user = ?', [$subject['id_user']]) ?>
+                            <a href="<?= $app . 'searchdrawings/searchdrawings.php?id=' . $user['id_user'] ?>"><?= $user['login'] ?></a>
+                        </td>
+                        <td>
+                            <?= $subject['created_at'] ?>
+                        </td>
+                        <td>
+                            <?php $nbMessages = $db->queryOne('SELECT COUNT(*) AS nb FROM messages WHERE id_subject = ?', [$subject['id_subject']]) ?>
+                            <?= $nbMessages['nb'] ?>
+                        </td>
+                        <td>
+                            <?php $idLastMessage = $db->queryOne('SELECT MAX(id_message) AS id_last FROM messages WHERE id_subject = ?', [$subject['id_subject']]) ?>
+                            <?php $datetimeLastMessage = $db->queryOne('SELECT DATE_FORMAT(created_at, \'%d/%m/%y %Hh%i\') AS created_at FROM messages WHERE id_message = ? AND id_subject = ?', [$idLastMessage['id_last'], $subject['id_subject']]) ?>
+                            <?= $datetimeLastMessage['created_at'] ?>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p id="nothing">
+            Il n'y a pas de sujet commencé dans ce thème.
+            <?php if($userSession->isLogged()): ?>
+                <a href="creatingsubject.php"><button>Créer un sujet</button></a>
+            <?php endif ?>
+        </p>
+    <?php endif ?>
+    <nav class="counter">
+        <?php if($page > 1): ?>
+            <a class="stream" href="?idTheme=<?= $idTheme ?>&page=<?= $page - 1 ?>"><i class="fas fa-chevron-left"></i> Précédent</a>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= 1 ?>"><?= 1 ?></a>
+            <?php if($page < 9): ?>
+                ...
+            <?php endif ?>
+        <?php endif ?>
+        <?php if($page >= 9): ?>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= ceil($page / 3) ?>"><?= ceil($page / 3) ?></a>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= ceil($page * 2 / 3) ?>"><?= ceil($page * 2 / 3) ?></a>
+            ...
+        <?php endif ?>
+        <?php if($page >= 3): ?>
+            <?php for($i = $page - 2; $i < $page; $i++): ?>
+                <a href="?idTheme=<?= $idTheme ?>&page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if($nbPages > 1): ?>
+            <a class="current" href="?idTheme=<?= $idTheme ?>&page=<?= $page ?>"><?= $page ?></a>
+        <?php endif ?>
+        <?php if($page <= $nbPages - 2): ?>
+            <?php for($i = $page + 1; $i <= $page + 2; $i++): ?>
+                <a href="?idTheme=<?= $idTheme ?>&page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) >= 3): ?>
+            ...
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= ceil(1/3 * ($nbPages - $page) + $page) ?>"><?= ceil(1/3 * ($nbPages - $page) + $page) ?></a>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= ceil(2/3 * ($nbPages - $page) + $page) ?>"><?= ceil(2/3 * ($nbPages - $page) + $page) ?></a>
+        <?php endif ?>
+        <?php if($page < $nbPages): ?>
+            <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) < 3): ?>
+                ...
+            <?php endif ?>
+            <a href="?idTheme=<?= $idTheme ?>&page=<?= $nbPages ?>"><?= $nbPages ?></a>
+            <a class="stream" href="?idTheme=<?= $idTheme ?>&page=<?= $page + 1 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php endif ?>
+    </nav>
+</main>

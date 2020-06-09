@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+/* Smartphone en portrait */
+@media all and (min-width: 0px) {
+
+    .form {
+        background-color: #FAFAFA;
+        padding: 10px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .form fieldset {
+        padding: 0 20px 20px 20px;
+        margin-bottom: 10px;
+        border: 1px solid #DF3F3F;
+    }
+    .form legend {
+        color: #DF3F3F;
+        font-weight: bold;
+    }
+    .form li {
+        list-style-type: none;
+    }
+    .form label {
+        margin-top: 10px;
+        display: block;
+        font-weight: bold;
+    }
+    .form input, .form textarea, .form select, .form option {
+        background-color: #FFF3F3;
+    }
+    .form input, .form textarea, .form select {
+        padding: 3px;
+        border: 1px solid #F5C5C5;
+        border-radius: 5px;
+        width: 75%;
+        box-shadow: 1px 1px 2px #C0C0C0 inset;
+    }
+    .form input.empty {
+        width: 60%;
+    }
+    .form select {
+        margin-top: 10px;
+    }
+    .form input[type=radio] {
+        background-color: transparent;
+        border: none;
+        width: auto;
+    }
+    .form input[type=submit], .form input[type=reset] {
+        width: auto;
+        margin-left: 5px;
+        box-shadow: 1px 1px 1px #D83F3D;
+        cursor: pointer;
+    }
+    .form input:focus, .form textarea:focus, .form button:focus {
+        background-color:white;
+    }
+    .form input[type=submit]:focus, .form input[type=reset]:focus, .form button:focus {
+        background-color:#FFF3F3;
+    }
+    .form input[type=submit]:hover, .form input[type=reset]:hover, .form button:hover {
+        background-color:#FCDEDE;
+    }
+    .form input[type=submit]:active, .form input[type=reset]:active, .form button:active {
+        background-color:#FCDEDE;
+        box-shadow:1px 1px 1px #D83F3D inset;
+    }
+}
+
+/* Smartphone en paysage, tablette en portrait, petite tablette en paysage */
+@media all and (min-width: 480px) {
+
+    .form {
+        width: 90%;
+    }
+    .form input.empty {
+        width: 40%;
+    }
+}
+
+/* Tablette en paysage, ordinateur de taille petite et moyenne */
+@media all and (min-width: 960px) {
+
+    .form {
+        width: 70%;
+    }
+}
+
+/* Ordinateur de grande taille */
+@media all and (min-width: 1280px) {
+
+    .form {
+        width: 50%;
+    }
+}

@@ -1,0 +1,100 @@
+<main>
+    <h1>Forum</h1>
+    <h2>Tous mes messages</h2>
+    <nav class="counter">
+        <?php if($page > 1): ?>
+            <a class="stream" href="?page=<?= $page - 1 ?>"><i class="fas fa-chevron-left"></i> Précédent</a>
+            <a href="?page=<?= 1 ?>"><?= 1 ?></a>
+            <?php if($page < 9): ?>
+                ...
+            <?php endif ?>
+        <?php endif ?>
+        <?php if($page >= 9): ?>
+            <a href="?page=<?= ceil($page / 3) ?>"><?= ceil($page / 3) ?></a>
+            <a href="?page=<?= ceil($page * 2 / 3) ?>"><?= ceil($page * 2 / 3) ?></a>
+            ...
+        <?php endif ?>
+        <?php if($page >= 3): ?>
+            <?php for($i = $page - 2; $i < $page; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if($nbPages > 1): ?>
+            <a class="current" href="?page=<?= $page ?>"><?= $page ?></a>
+        <?php endif ?>
+        <?php if($page <= $nbPages - 2): ?>
+            <?php for($i = $page + 1; $i <= $page + 2; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) >= 3): ?>
+            ...
+            <a href="?page=<?= ceil(1/3 * ($nbPages - $page) + $page) ?>"><?= ceil(1/3 * ($nbPages - $page) + $page) ?></a>
+            <a href="?page=<?= ceil(2/3 * ($nbPages - $page) + $page) ?>"><?= ceil(2/3 * ($nbPages - $page) + $page) ?></a>
+        <?php endif ?>
+        <?php if($page < $nbPages): ?>
+            <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) < 3): ?>
+                ...
+            <?php endif ?>
+            <a href="?page=<?= $nbPages ?>"><?= $nbPages ?></a>
+            <a class="stream" href="?page=<?= $page + 1 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php endif ?>
+    </nav>
+    <?php if($nbMyMessages > 0): ?>
+        <br>
+        <?php foreach($myMessages as $myMessage): ?>
+            <div class="message">
+                <?php $idSubject = $db->queryOne('SELECT id_subject FROM messages WHERE id_message = ?', [$myMessage['id_message']]) ?>
+                <?php $subject = $db->queryOne('SELECT title FROM subjects WHERE id_subject = ?', [$idSubject['id_subject']]) ?>
+                <div class="title"><a href="messages.php?idSubject=<?= $idSubject['id_subject'] ?>"><?= $subject['title'] ?></a></div>
+                <div class="date"><?= $myMessage['created_at'] ?></div>
+                <p class="content"><?= $myMessage['content'] ?></p>
+            </div>
+        <?php endforeach ?>
+        <br>
+    <?php else: ?>
+        <p id="nothing">
+            Vous n'avez pas créé de message.
+            <a href="creatingsubject.php"><button>Créer un sujet</button></a>
+        </p>
+    <?php endif ?>
+    <nav class="counter">
+        <?php if($page > 1): ?>
+            <a class="stream" href="?page=<?= $page - 1 ?>"><i class="fas fa-chevron-left"></i> Précédent</a>
+            <a href="?page=<?= 1 ?>"><?= 1 ?></a>
+            <?php if($page < 9): ?>
+                ...
+            <?php endif ?>
+        <?php endif ?>
+        <?php if($page >= 9): ?>
+            <a href="?page=<?= ceil($page / 3) ?>"><?= ceil($page / 3) ?></a>
+            <a href="?page=<?= ceil($page * 2 / 3) ?>"><?= ceil($page * 2 / 3) ?></a>
+            ...
+        <?php endif ?>
+        <?php if($page >= 3): ?>
+            <?php for($i = $page - 2; $i < $page; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if($nbPages > 1): ?>
+            <a class="current" href="?page=<?= $page ?>"><?= $page ?></a>
+        <?php endif ?>
+        <?php if($page <= $nbPages - 2): ?>
+            <?php for($i = $page + 1; $i <= $page + 2; $i++): ?>
+                <a href="?page=<?= $i ?>"><?= $i ?></a>
+            <?php endfor ?>
+        <?php endif ?>
+        <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) >= 3): ?>
+            ...
+            <a href="?page=<?= ceil(1/3 * ($nbPages - $page) + $page) ?>"><?= ceil(1/3 * ($nbPages - $page) + $page) ?></a>
+            <a href="?page=<?= ceil(2/3 * ($nbPages - $page) + $page) ?>"><?= ceil(2/3 * ($nbPages - $page) + $page) ?></a>
+        <?php endif ?>
+        <?php if($page < $nbPages): ?>
+            <?php if(ceil((1/3 * ($nbPages - $page) + $page) - $page) < 3): ?>
+                ...
+            <?php endif ?>
+            <a href="?page=<?= $nbPages ?>"><?= $nbPages ?></a>
+            <a class="stream" href="?page=<?= $page + 1 ?>">Suivant <i class="fas fa-chevron-right"></i></a>
+        <?php endif ?>
+    </nav>
+</main>

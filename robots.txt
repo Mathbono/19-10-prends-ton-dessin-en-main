@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /prends-ton-dessin-en-main/app/error.php
+Sitemap: /prends-ton-dessin-en-main/sitemap.xml

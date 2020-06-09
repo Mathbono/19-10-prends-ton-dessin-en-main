@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/* Smartphone en portrait */
+@media all and (min-width: 0px) {
+
+    #extend {
+        background: red;
+        text-align: center;
+    }
+    #extend::before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        font-size: 0;
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        display: inline-block;
+        vertical-align: middle;
+        font-weight: bold;
+    }
+}
+
+/* Smartphone en paysage, tablette en portrait, petite tablette en paysage */
+@media all and (min-width: 480px) {
+
+}
+
+/* Tablette en paysage, ordinateur de taille petite et moyenne */
+@media all and (min-width: 960px) {
+
+}
+
+/* Ordinateur de grande taille */
+@media all and (min-width: 1280px) {
+
+}
